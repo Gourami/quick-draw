@@ -1,4 +1,4 @@
-class Vector3 {
+export default class Vector3 {
   /**
    * Constructor of Vector3
    * If opt_src is specified, new vector is initialized by opt_src.

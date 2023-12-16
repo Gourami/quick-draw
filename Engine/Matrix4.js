@@ -1,4 +1,4 @@
-class Matrix4 {
+export default class Matrix4 {
   constructor(opt_src) {
     var i, s, d;
     if (opt_src && typeof opt_src === "object" && opt_src.hasOwnProperty("elements")) {

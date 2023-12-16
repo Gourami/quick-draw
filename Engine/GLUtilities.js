@@ -1,4 +1,4 @@
-class GLUtilities {
+export default class GLUtilities {
   static getGL(canvas) {
     if (typeof canvas.gl !== typeof undefined && canvas.gl.el === canvas.el) {
       return canvas.gl;

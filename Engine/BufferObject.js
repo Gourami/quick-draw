@@ -1,4 +1,4 @@
-class BufferObject {
+export default class BufferObject {
   constructor(gl, name, numComponents, data, target, glDataType, glAttribLoc = -1) {
     this.name = name;
     this.numComponents = numComponents;
