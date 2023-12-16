@@ -1,5 +1,5 @@
 {
-  "name": "quick-draw",
+  "name": "@stilogik/quick-draw",
   "version": "1.0.0",
   "description": "Simple WebGL utility framework for rendering objects to HTML canvas",
   "main": "index.js",
