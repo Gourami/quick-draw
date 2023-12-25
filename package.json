@@ -3,6 +3,7 @@
     "version": "1.1.0",
     "description": "Simple WebGL utility framework for rendering objects to HTML canvas",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "test": "test"
     },
