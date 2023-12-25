@@ -1,24 +1,21 @@
 export default class GLUtilities {
   static getGL(canvas) {
-    if (typeof canvas.gl !== typeof undefined && canvas.gl.el === canvas.el) {
-      return canvas.gl;
+    let gl;
+    gl = canvas.getContext("webgl2");
+    if (gl !== null) {
+      gl.version = 3.0;
+      console.log("running WebGL2");
+      return gl;
     } else {
-      canvas.gl = canvas.el.getContext("webgl2");
-      if (canvas.gl !== null) {
-        canvas.gl.version = 3.0;
-        console.log("running WebGL2");
-        return canvas.gl;
+      gl = canvas.getContext("webgl");
+      if (!gl) {
+        canvas.version = null;
+        console.log("Sorry, your device is not setup for Web GL");
+        return null;
       } else {
-        canvas.gl = canvas.getContext("webgl");
-        if (!canvas.gl) {
-          canvas.version = null;
-          console.log("Sorry, your device is not setup for Web GL");
-          return null;
-        } else {
-          canvas.gl.version = 1.0;
-          console.log("Running WebGL");
-          return canvas.gl;
-        }
+        gl.version = 1.0;
+        console.log("Running WebGL");
+        return gl;
       }
     }
   }
@@ -103,7 +100,10 @@ export default class GLUtilities {
     // Save it to AppState so it is available across the app
     const programInfo = {
       program: prog,
-      attribLocations: [gl.getAttribLocation(prog, "aVertexPosition"), gl.getAttribLocation(prog, "aVertexColor")],
+      attribLocations: [
+        gl.getAttribLocation(prog, "aVertexPosition"),
+        gl.getAttribLocation(prog, "aVertexColor"),
+      ],
       uniformLocations: {
         projectionMatrix: gl.getUniformLocation(prog, "uProjectionMatrix"),
         viewMatrix: gl.getUniformLocation(prog, "uViewMatrix"),
@@ -139,7 +139,14 @@ export default class GLUtilities {
 
       if (bo.target === gl.ELEMENT_ARRAY_BUFFER) continue;
 
-      gl.vertexAttribPointer(bo.glAttribLoc, bo.numComponents, bo.glDataType, false, 0, 0);
+      gl.vertexAttribPointer(
+        bo.glAttribLoc,
+        bo.numComponents,
+        bo.glDataType,
+        false,
+        0,
+        0
+      );
       gl.enableVertexAttribArray(bo.glAttribLoc);
     }
   }
