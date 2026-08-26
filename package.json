@@ -1,20 +1,48 @@
 {
-    "name": "@stilogik/quick-draw",
-    "version": "1.1.2",
-    "description": "Simple WebGL utility framework for rendering objects to HTML canvas",
-    "main": "index.js",
-    "type": "module",
-    "scripts": {
-        "test": "test"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Gourami/quick-draw.git"
-    },
-    "author": "Tyler Dill",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Gourami/quick-draw/issues"
-    },
-    "homepage": "https://github.com/Gourami/quick-draw#readme"
+  "name": "@stilogik/quick-draw",
+  "version": "2.0.0",
+  "description": "Simple WebGL utility framework for rendering objects to HTML canvas",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test test/*.test.js",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gourami/quick-draw.git"
+  },
+  "author": "Tyler Dill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gourami/quick-draw/issues"
+  },
+  "homepage": "https://github.com/Gourami/quick-draw#readme",
+  "keywords": [
+    "webgl",
+    "webgl2",
+    "canvas",
+    "matrix",
+    "vector"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
 }
